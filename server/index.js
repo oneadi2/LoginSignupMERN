@@ -8,7 +8,8 @@ const app=express()
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect("mongodb://127.0.0.1:27017/employee");
+mongoose.connect("mongodb+srv://oneadichikpea01:Oneadidev12345@cluster0.wo4sj74.mongodb.net/?retryWrites=true&w=majority")
+.then(()=>app.listen(5000)).then(()=>console.log("Connected to database port 5000"))
 
 app.post("/login",(req,res)=>{
     const {email,password}=req.body;
@@ -32,6 +33,18 @@ app.post('/register',(req,res)=>{
     .catch(err=>res.json(err)))
 });
 
-app.listen(3001,()=>{
-    console.log("Server is running");
-})
+// app.get('/',(req,res)=>{
+//     EmployeeModel.findOne({email:email})
+//     .then(user=>{
+//         if(user){
+//            return res.json(user);
+//         }else{
+//             res.json("No record existed");
+//         }
+//     })
+    
+// })
+
+// app.listen(3001,()=>{
+//     console.log("Server is running");
+// })
